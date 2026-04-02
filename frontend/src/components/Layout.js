@@ -67,8 +67,8 @@ const styles = `
   }
 
   .nav-logo-box {
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
     background: var(--accent-dim);
     border: 1px solid var(--border-active);
     border-radius: 2px;
@@ -85,7 +85,7 @@ const styles = `
 
   .nav-wordmark-text {
     font-family: var(--sans);
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 800;
     letter-spacing: -0.02em;
     color: var(--text);
