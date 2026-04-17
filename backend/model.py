@@ -64,7 +64,7 @@ def _infer_column_types(df: pd.DataFrame):
     return numeric_cols, categorical_cols
 
 
-def _find_redundant_features(df: pd.DataFrame, threshold: int 15):
+def _find_redundant_features(df: pd.DataFrame, threshold: int=10):
     """Return high-cardinality categorical columns only.
 
     Only object/string columns are considered redundant for this rule.
