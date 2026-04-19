@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import Home from "./pages/Home";
 import Upload from "./pages/Upload";
@@ -17,6 +18,7 @@ function App() {
         <Route path="/eda" element={<EDA />} />
         <Route path="/predictor" element={<Predictor />} />
       </Routes>
+      <SpeedInsights />
     </Router>
   );
 }
