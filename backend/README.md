@@ -29,6 +29,7 @@ A professional, end-to-end Automated Machine Learning platform powered by FastAP
 - **Automated Model Training**: Instant evaluation of multiple algorithms and selection of the best performer.
 - **Deep EDA**: Automated exploratory analysis with rich visualizations and outlier detection.
 - **Real-time Predictor**: Interact with trained models through a dynamic form or bulk CSV processing.
+- **Session History & Reuse**: Persistent storage of models and metadata, allowing users to reload past sessions for instant inference and visualization.
 - **Feedback System**: Integrated query system via Resend API (HTTPS).
 
 ## Tech Stack

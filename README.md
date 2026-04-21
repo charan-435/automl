@@ -35,7 +35,12 @@ Once trained, your model is immediately deployable.
 - Perform bulk predictions by uploading a secondary CSV.
 - Download results instantly.
 
-### 4. Global Feedback System
+### 4. Smart Session History & Reuse
+- **Persistence**: Save your training results, metadata, and champion models automatically.
+- **Instant Reload**: Jump back into any past session to review EDA charts, performance metrics, or perform new inferences without having to re-upload data or re-train models.
+- **Efficiency**: Reduces disk usage by over 90%. Instead of redundant CSV storage, the platform caches unique categorical mappings and pre-computed snapshots.
+
+### 5. Global Feedback System
 A glassmorphic feedback query system integrated with the **Resend API**, ensuring your queries reach our team directly via email—even when deployed on restrictive cloud environments like Hugging Face.
 
 ---
