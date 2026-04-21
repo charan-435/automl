@@ -57,12 +57,12 @@ def send_feedback_email(fb: Feedback):
     api_key = os.getenv("RESEND_API_KEY", "").strip()
 
     if not api_key:
-        print("⚠️ RESEND_API_KEY not set. Check your (.env) file.")
+        print("RESEND_API_KEY not set. Check your (.env) file.")
         print(f"Feedback from {fb.name} ({fb.email}): {fb.query}")
         return False
 
     try:
-        print(f"📧 Attempting to send email via Resend API...")
+        print(f"Attempting to send email via Resend API...")
         
         # resend free tier only lets you send from onboarding@resend.dev
         # until you verify your own domain
@@ -81,14 +81,14 @@ def send_feedback_email(fb: Feedback):
         )
         
         if resp.status_code in [200, 201]:
-            print(" Email sent successfully via Resend!")
+            print("Email sent successfully via Resend!")
             return True
         else:
-            print(f" Resend API Error: {resp.status_code} - {resp.text}")
+            print(f"Resend API Error: {resp.status_code} - {resp.text}")
             return False
             
     except Exception as e:
-        print(f" Failed to send email via Resend: {type(e).__name__} - {e}")
+        print(f"Failed to send email via Resend: {type(e).__name__} - {e}")
         return False
 
 
