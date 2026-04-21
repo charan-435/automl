@@ -88,6 +88,8 @@
   border-radius: 2px;
   overflow: hidden;
   background: var(--surface);
+  margin-bottom: 45px;
+  margin-top: 15px;
 }
 
 .stat-cell {
