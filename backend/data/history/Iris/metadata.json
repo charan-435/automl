@@ -1,0 +1,91 @@
+{
+  "dataset_name": "Iris",
+  "timestamp": "2026-04-21T19:11:09.613046+00:00",
+  "scores": {
+    "LinearRegression": {
+      "cv_mean_r2": 0.8509,
+      "cv_std": 0.0402,
+      "test_r2": 0.9206,
+      "test_mae": 10.4146
+    },
+    "RandomForestRegressor": {
+      "cv_mean_r2": 0.8013,
+      "cv_std": 0.0492,
+      "test_r2": 0.8626,
+      "test_mae": 13.4232
+    },
+    "GradientBoostingRegressor": {
+      "cv_mean_r2": 0.7817,
+      "cv_std": 0.0522,
+      "test_r2": 0.8565,
+      "test_mae": 13.4754
+    },
+    "ExtraTreesRegressor": {
+      "cv_mean_r2": 0.7845,
+      "cv_std": 0.0643,
+      "test_r2": 0.8426,
+      "test_mae": 14.6743
+    },
+    "HistGradientBoostingRegressor": {
+      "cv_mean_r2": 0.8382,
+      "cv_std": 0.0438,
+      "test_r2": 0.8989,
+      "test_mae": 11.808
+    },
+    "KNeighborsRegressor": {
+      "cv_mean_r2": 0.8189,
+      "cv_std": 0.0572,
+      "test_r2": 0.8934,
+      "test_mae": 11.2733
+    },
+    "AdaBoostRegressor": {
+      "cv_mean_r2": 0.8388,
+      "cv_std": 0.0371,
+      "test_r2": 0.9068,
+      "test_mae": 11.0335
+    }
+  },
+  "target": "Id",
+  "problem_type": "regression",
+  "best_model": "LinearRegression",
+  "best_cv_score": 0.8509,
+  "column_types": {
+    "SepalLengthCm": {
+      "type": "numeric"
+    },
+    "SepalWidthCm": {
+      "type": "numeric"
+    },
+    "PetalLengthCm": {
+      "type": "numeric"
+    },
+    "PetalWidthCm": {
+      "type": "numeric"
+    },
+    "Species": {
+      "type": "categorical",
+      "values": [
+        "Iris-setosa",
+        "Iris-versicolor",
+        "Iris-virginica"
+      ]
+    }
+  },
+  "redundant_features": [],
+  "feature_columns": [
+    "SepalLengthCm",
+    "SepalWidthCm",
+    "PetalLengthCm",
+    "PetalWidthCm",
+    "Species_Iris-versicolor",
+    "Species_Iris-virginica"
+  ],
+  "original_columns": [
+    "Id",
+    "SepalLengthCm",
+    "SepalWidthCm",
+    "PetalLengthCm",
+    "PetalWidthCm",
+    "Species"
+  ]
+}
