@@ -81,7 +81,7 @@ def _save_session(
         with open(os.path.join(d, "columns.pkl"), "wb") as f:
             pickle.dump(columns, f)
 
-        # 4. metadata ? all scores + train response fields + timestamp
+        # 4. metadata all scores + train response fields + timestamp
         meta = {
             "dataset_name": dataset_name,
             "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -95,11 +95,11 @@ def _save_session(
             "feature_columns": columns,           # post-one-hot model columns
             "original_columns": list(df.columns), # raw CSV columns (for Predictor UI)
         }
-        with open(os.path.join(d, "metadata.json"), "w") as f:
+        with open(os.path.join(d, "metadata.json"), "w", encoding="utf-8") as f:
             json.dump(meta, f, indent=2)
 
         # 5. EDA snapshot
-        with open(os.path.join(d, "eda.json"), "w") as f:
+        with open(os.path.join(d, "eda.json"), "w", encoding="utf-8") as f:
             json.dump(eda_payload, f)
 
         print(f"Session saved -> {d}")
@@ -114,7 +114,7 @@ def _load_metadata(name: str) -> dict | None:
     if not os.path.exists(path):
         return None
     try:
-        with open(path) as f:
+        with open(path, encoding="utf-8") as f:
             return json.load(f)
     except Exception:
         return None
@@ -281,7 +281,7 @@ async def upload_file(file: UploadFile = File(...)):
     if ext not in ALLOWED_EXTENSIONS:
         raise HTTPException(status_code=415, detail=f"Only CSV files are supported. Got: '{ext}'")
 
-    # read entirely into memory ? never write to disk
+    # read entirely into memory  never write to disk
     try:
         contents = await file.read()
         global_df = pd.read_csv(io.BytesIO(contents))
@@ -427,7 +427,7 @@ def _compute_eda_payload() -> dict:
     for col in num_cols:
         counts, bins = np.histogram(display_df[col].dropna(), bins=6)
         histograms[col] = [
-            {"bin": f"{round(bins[i], 2)}-{round(bins[i+1], 2)}", "count": int(counts[i])}
+            {"bin": f"{round(bins[i], 2)} - {round(bins[i+1], 2)}", "count": int(counts[i])}
             for i in range(len(counts))
         ]
 
@@ -575,8 +575,16 @@ async def eda():
         h_path = os.path.join(HISTORY_DIR, global_dataset_name, "eda.json")
         if os.path.exists(h_path):
             try:
-                with open(h_path) as f:
-                    return json.load(f)
+                with open(h_path, encoding="utf-8") as f:
+                    data = json.load(f)
+                    # repair old histogram labels if they contain '?' or other bad chars
+                    if "histograms" in data:
+                        for col in data["histograms"]:
+                            for item in data["histograms"][col]:
+                                if "bin" in item and isinstance(item["bin"], str):
+                                    # replace en-dash or existing '?' with standard hyphen
+                                    item["bin"] = item["bin"].replace("?", "-").replace("\u2013", "-").replace("\u2014", "-")
+                    return data
             except Exception as e:
                 print(f"(!) Failed to load cached EDA: {e}")
 
