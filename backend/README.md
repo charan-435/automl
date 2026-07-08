@@ -44,4 +44,4 @@ A professional, end-to-end Automated Machine Learning platform powered by FastAP
 2. The space will automatically build and run the application.
 
 ---
-Created by [Your Portfolio/Profile Name]
+Created by [Charan]
